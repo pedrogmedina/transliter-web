@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Monedas</title>
+    
+    <head-links></head-links>
+</head>
+<body class="bg-body-secondary text-dark">
+    <header-component></header-component>
+    <main>
+        <banner-component 
+            data-title="Currency Converter" 
+            data-subtitle="Convert currencies quickly and easily.">
+        </banner-component>
+    </main>
+
+    <footer-component></footer-component>
+
+    <!-- Scripts -->
+     <script type="module" src="components/headlinks/headlinks.js"></script>
+    <script type="module" src="components/header/header.js"></script>
+    <script type="module" src="components/footer/footer.js"></script>
+    <script type="module" src="components/banner/banner.js"></script>
+    <script src="js/Notification.js"></script>
+    <script src="js/CurrencyService.js"></script>
+    <script src="js/CurrencyConverter.js"></script>
+    <script>
+        // Variable global para acceder desde onclick
+        let converter;
+        
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', () => {
+            const currencyService = new CurrencyService();
+            converter = new CurrencyConverter(currencyService);
+            console.log('✅ Conversor iniciado correctamente');
+        });
+    </script>
+</body>
+</html>
