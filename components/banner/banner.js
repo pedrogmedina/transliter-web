@@ -1,6 +1,6 @@
 class BannerComponent extends HTMLElement {
     async connectedCallback() {
-        const response = await fetch('/components/banner/banner.html');
+        const response = await fetch('./components/banner/banner.html');
         const html = await response.text();
 
         this.innerHTML = html;

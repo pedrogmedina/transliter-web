@@ -1,7 +1,7 @@
 
 class HeaderComponent extends HTMLElement {
     async connectedCallback() {
-        const response = await fetch('/components/header/header.html');
+        const response = await fetch('./components/header/header.html');
         const html = await response.text();
 
         this.innerHTML = html;
