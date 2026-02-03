@@ -8,14 +8,7 @@ class App {
 
     init() {
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize translator component
-            /* const translator = new Translator();
-            translator.init(); */
-
-            /* const translationService = new TranslationService(); */
-            new TranslatorComponent(TranslationService);
-
-            console.log('App initialized');
+            new TranslatorComponent(new TranslationService());
         });
     }
 }

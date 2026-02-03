@@ -1,15 +1,21 @@
-import { API_CONFIG } from "../config/api.js";
+
+import { TRANSLATE_API_CONFIG } from "../config/api.js";
 
 export class TranslationService {
     static instanceof = null;
 
-    constructor() {
-        if (TranslationService.instanceof) {
-            return TranslationService.instanceof;
-        }
-        TranslationService.instanceof = this;
+    constructor() {}
 
-        console.log('TranslationService initialized');
+    buildApiUrl(text, sourceLang, targetLang) {
+        const params = new URLSearchParams({
+            client: TRANSLATE_API_CONFIG.CLIENT,
+            sl: sourceLang, // source language
+            tl: targetLang, // target language
+            dt: TRANSLATE_API_CONFIG.DATA_TYPE,
+            q: text,
+        });
+
+        return `${TRANSLATE_API_CONFIG.BASE_URL}?${params.toString()}`;
     }
 
     async translate(text, sourceLang, targetLang) {
@@ -30,16 +36,6 @@ export class TranslationService {
         }
     }
 
-    buildApiUrl(text, sourceLang, targetLang) {
-        const params = new URLSearchParams({
-            client: API_CONFIG.CLIENT,
-            sl: sourceLang, // source language
-            tl: targetLang, // target language
-            dt: API_CONFIG.DATA_TYPE,
-            q: text,
-        });
-
-        return `${API_CONFIG.BASE_URL}?${params.toString()}`;
-    }
+    
 
 }

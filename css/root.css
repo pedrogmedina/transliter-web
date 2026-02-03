@@ -10,7 +10,9 @@
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
+  --bs-btn-active-bg: #176C60;
+  --bs-btn-active-border: #176C60;
 
-    --bs-primary-rgb: 9, 94, 45;
-    --bs-secondary-rgb: 253, 241, 217;
+  --bs-primary-rgb: 9, 94, 45;
+  --bs-secondary-rgb: 253, 241, 217;
 }

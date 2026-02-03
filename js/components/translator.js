@@ -1,9 +1,11 @@
 import { LANGUAGES } from '../config/languages.js';
+import { NotificationComponent } from './notification.js';
+import { Validator } from '../utils/validator.js';
 
 export class TranslatorComponent {
     constructor(translationService) {
-        this.service = new translationService();
-
+        this.service = translationService;
+        this.notification = new NotificationComponent('notification');
         this.elements = {
             translateButton: document.getElementById('translate-button'),
             sourceLanguageSelect: document.getElementById('source-language-select'),
@@ -16,24 +18,8 @@ export class TranslatorComponent {
     }
 
     init() {
-        console.log('Translator component initialized');
         this.getLanguagesList();
         this.eventListeners();
-    }
-
-    eventListeners() {
-        this.elements.translateButton.addEventListener('click', () => this.translateText());
-        this.elements.sourceTextarea.addEventListener('input', () => this.onSourceTextChange());
-    }
-
-    onSourceTextChange() {
-        const valueLength = this.elements.sourceTextarea.value.length;
-
-        if(valueLength >= 4) {
-            this.translateText();
-        } else {
-            this.elements.translatedTextarea.value = '';
-        }
     }
 
     getLanguagesList() {
@@ -52,24 +38,41 @@ export class TranslatorComponent {
 
             this.elements.targetLanguageSelect.value = 'en';
     }
+    
+    eventListeners() {
+        this.elements.translateButton.addEventListener('click', () => this.translateText());
+        this.elements.sourceTextarea.addEventListener('input', () => this.onSourceTextChange());
+    }
+
+    onSourceTextChange() {
+        const valueLength = this.elements.sourceTextarea.value.length;
+
+        if(valueLength >= 4) {
+            this.translateText();
+        } else {
+            this.elements.translatedTextarea.value = '';
+        }
+    }
+
 
     async translateText() {
-        console.log('Translating text...');
-
         this.elements.translatedTextarea.value = 'Translating...';
-
         
         try {
             const text = this.elements.sourceTextarea.value;
             const source = this.elements.sourceLanguageSelect.value;
             const target = this.elements.targetLanguageSelect.value;
 
+            Validator.validateText(text);
+
+            this.notification.hide();
+
             const translation = await this.service.translate(text, source, target);
 
             this.elements.translatedTextarea.value = translation;
         }
         catch(error) {
-            alert('Error during translation: ' + error.message);
+            this.notification.show('Translation failed. Please try again later.', 'danger');
         }
     }
 }
