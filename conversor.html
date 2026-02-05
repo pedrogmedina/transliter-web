@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor de Monedas</title>
-    
-    <head-links></head-links>
-</head>
+<head-links></head-links>
 <body class="bg-body-secondary text-dark">
     <header-component></header-component>
     <main>
@@ -14,32 +8,32 @@
             data-title="Currency Converter" 
             data-subtitle="Convert currencies quickly and easily.">
         </banner-component>
-    </main>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="d-flex flex-column gap-3 my-5">
-                    <div class="d-flex">
-                        <select id="fromCurrency" class="form-select me-2 w-auto">
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                            <option value="GBP">GBP</option>
-                        </select>
-                        <input type="number" id="amount" class="form-control me-2 w-100" placeholder="Amount">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex flex-column gap-3 my-5">
+                        <div class="d-flex">
+                            <select id="fromCurrency" class="form-select me-2 w-auto">
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="GBP">GBP</option>
+                            </select>
+                            <input type="number" id="amount" class="form-control me-2 w-100" placeholder="Amount">
+                        </div>
+                        <div class="d-flex">
+                            <select id="toCurrency" class="form-select me-2 w-auto">
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="GBP">GBP</option>
+                            </select>
+                            <input type="text" id="result" class="form-control w-100" placeholder="Converted Amount" readonly>
+                        </div>
                     </div>
-                    <div class="d-flex">
-                        <select id="toCurrency" class="form-select me-2 w-auto">
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                            <option value="GBP">GBP</option>
-                        </select>
-                        <input type="text" id="result" class="form-control w-100" placeholder="Converted Amount" readonly>
-                    </div>
+                    <button id="convertButton" class="btn btn-primary w-100">Convert</button>
                 </div>
-                <button id="convertButton" class="btn btn-primary w-100">Convert</button>
             </div>
         </div>
-    </div>
+    </main>
 
     <footer-component></footer-component>
 
