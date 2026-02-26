@@ -1,3 +1,4 @@
+import "../dropdown/dropdown.js";
 
 class HeaderComponent extends HTMLElement {
     async connectedCallback() {

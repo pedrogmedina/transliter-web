@@ -10,6 +10,13 @@ class HeadLinks extends HTMLElement {
             const content = template.content;
             const headEl = content.querySelector('head');
 
+            const title = this.getAttribute('data-title') || 'Default Title';
+
+            const titleElement = content.querySelector('title');
+            if (titleElement) {
+                titleElement.textContent = title;
+            }
+
             if (headEl) {
                 while (headEl.firstChild) {
                     document.head.appendChild(headEl.firstChild);
